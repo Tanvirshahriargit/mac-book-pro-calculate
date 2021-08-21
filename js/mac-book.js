@@ -1,5 +1,4 @@
 const bestPrice = document.getElementById('best-price');
-
 const extraMemoryCost = document.getElementById('ex-m-cost');
 const extraStorageCost = document.getElementById('ex-storage-cost');
 const freeDelivery = document.getElementById('delivery-charge');
@@ -38,13 +37,11 @@ document.getElementById('256gb-cost').addEventListener('click', function () {
 
 });
 document.getElementById('512gb-cost').addEventListener('click', function () {
-    
     extraStorageCost.innerText = '100';
     updateTotal();
     
 });
 document.getElementById('1tb-cost').addEventListener('click', function () {
-    
     extraStorageCost.innerText = '180';
     updateTotal();
     
@@ -53,13 +50,11 @@ document.getElementById('1tb-cost').addEventListener('click', function () {
 // Delivary Charge addEventListener
 
 document.getElementById('free-delivery').addEventListener('click', function () {
-    
     freeDelivery.innerText = '0';
     updateTotal();
     
 });
 document.getElementById('delivery-charge-express').addEventListener('click', function () {
-    
     freeDelivery.innerText = '20';
     updateTotal();
     
