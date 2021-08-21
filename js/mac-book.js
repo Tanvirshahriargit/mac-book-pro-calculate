@@ -1,57 +1,80 @@
-// Memory Cost
-function getMemoryCoat(price) {
-    const extraMemoryCost = document.getElementById('ex-m-cost');
-    extraMemoryCost.innerText = Number(price);
+const bestPrice = document.getElementById('best-price');
+
+const extraMemoryCost = document.getElementById('ex-m-cost');
+const extraStorageCost = document.getElementById('ex-storage-cost');
+const freeDelivery = document.getElementById('delivery-charge');
+const total = document.getElementById('total-price');
+
+// update Total Function
+
+function updateTotal() {
+    const bestPriceTotal = Number (bestPrice.innerText);
+    const memoryTotal = Number (extraMemoryCost.innerText);
+    const storagesTotal = Number (extraStorageCost.innerText);
+    const delivarysTotal = Number(freeDelivery.innerText);
+    const grandTotal = bestPriceTotal + memoryTotal + storagesTotal + delivarysTotal;
+    total.innerText = grandTotal;
+    const subTotal = document.getElementById('sub-total');
+    subTotal.innerText = grandTotal;
+    
 }
-// Storage Cost
-function getStorageCost(price) {
-    const extraStorageCost = document.getElementById('ex-storage-cost');
-    extraStorageCost.innerText = Number(price);
-}
-// Delivery Charge
-function getDeliveryCharge(price) {
-    const freeDelivery = document.getElementById('delivery-charge');
-    freeDelivery.innerText = Number(price);
-}    
 
 // Memory Cost addEventListener
 document.getElementById('8gb-cost').addEventListener('click', function () {
-    // const extraMemoryCost = document.getElementById('ex-m-cost');
-    // extraMemoryCost.innerText = 0;
-    getMemoryCoat(0);
+    extraMemoryCost.innerText = '0';
+    updateTotal();
+    
 });
 document.getElementById('16gb-cost').addEventListener('click', function () {
-    // const extraMemoryCost = document.getElementById('ex-m-cost');
-    // extraMemoryCost.innerText = 80;
-    getMemoryCoat(180);
+    extraMemoryCost.innerText ='180';
+    updateTotal();
+    
 });
 
 // Storage Cost addEventListener
 document.getElementById('256gb-cost').addEventListener('click', function () {
-    // const extraStorageCost = document.getElementById('ex-storage-cost');
-    // extraStorageCost.innerText = 0;
-    getStorageCost(0);
+    extraStorageCost.innerText = '0';
+    updateTotal();
+
 });
 document.getElementById('512gb-cost').addEventListener('click', function () {
-    // const extraStorageCost = document.getElementById('ex-storage-cost');
-    // extraStorageCost.innerText = 100;
-    getStorageCost(100);
+    
+    extraStorageCost.innerText = '100';
+    updateTotal();
+    
 });
 document.getElementById('1tb-cost').addEventListener('click', function () {
-    // const extraStorageCost = document.getElementById('ex-storage-cost');
-    // extraStorageCost.innerText = 180;
-    getStorageCost(180);
+    
+    extraStorageCost.innerText = '180';
+    updateTotal();
+    
 });
 
 // Delivary Charge addEventListener
 
 document.getElementById('free-delivery').addEventListener('click', function () {
-    // const freeDelivery = document.getElementById('delivery-charge');
-    // freeDelivery.innerText = 0;
-    getDeliveryCharge(0);
+    
+    freeDelivery.innerText = '0';
+    updateTotal();
+    
 });
 document.getElementById('delivery-charge-express').addEventListener('click', function () {
-    // const freeDelivery = document.getElementById('delivery-charge');
-    // freeDelivery.innerText = 20;
-    getDeliveryCharge(0);
+    
+    freeDelivery.innerText = '20';
+    updateTotal();
+    
+});
+document.getElementById('promo-btn').addEventListener('click', function () {
+    const promoCode = document.getElementById('promo-code');
+    const userPromo = promoCode.value;
+
+    if (userPromo == 'stevekaku') {
+        const subTotal = document.getElementById('sub-total');
+        const subTotalText = subTotal.innerText;
+        const subTotalAmount = parseInt(subTotalText);
+        const subAmount = subTotalAmount * (20 / 100);
+        const discount = subTotalAmount - subAmount;
+        subTotal.innerText = discount;
+    }
+    promoCode.value = '';
 });
